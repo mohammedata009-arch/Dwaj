@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار المحاضرة الأولى - كورس الدواجن</title>
+    <style>
+        :root {
+            --primary-blue: #0c1a30;
+            --accent-gold: #b08d41;
+            --success-green: #1d8348;
+            --error-red: #943126;
+            --white: #ffffff;
+            --wa-green: #2ecc71;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(120deg, #0c1a30 0%, #060d1a 100%);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--primary-blue);
+            padding: 15px;
+        }
+
+        #main-container {
+            background: var(--white);
+            width: 100%;
+            max-width: 650px;
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            text-align: center;
+            border-top: 10px solid var(--accent-gold);
+        }
+
+        h1 { font-size: 1.7rem; margin-bottom: 5px; color: var(--primary-blue); }
+        .subtitle { color: var(--accent-gold); font-weight: bold; margin-bottom: 25px; font-size: 1rem; }
+
+        .progress-bar-bg { background: #e5e8e8; height: 12px; border-radius: 6px; margin-bottom: 30px; overflow: hidden; }
+        #progress-fill { background: var(--accent-gold); width: 0%; height: 100%; transition: width 0.4s ease; }
+
+        .question-container { font-size: 1.25rem; font-weight: 700; margin-bottom: 25px; line-height: 1.6; min-height: 70px; text-align: right; }
+
+        .options-list { display: grid; gap: 12px; }
+        .option-btn {
+            padding: 16px;
+            border: 2px solid #d5dbdb;
+            border-radius: 12px;
+            background: var(--white);
+            cursor: pointer;
+            font-size: 1.05rem;
+            font-weight: 600;
+            transition: 0.3s;
+            text-align: right;
+            color: var(--primary-blue);
+        }
+        .option-btn:hover:not(:disabled) { border-color: var(--primary-blue); background: #ebf5fb; }
+        
+        .is-correct { background: var(--success-green) !important; color: white !important; border-color: var(--success-green) !important; }
+        .is-wrong { background: var(--error-red) !important; color: white !important; border-color: var(--error-red) !important; }
+
+        #info-box {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #fdfefe;
+            border: 1px solid #d5dbdb;
+            border-right: 5px solid var(--primary-blue);
+            text-align: right;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            animation: fadeIn 0.4s;
+        }
+
+        #final-screen { display: none; }
+        .score-display { font-size: 4rem; font-weight: 800; color: var(--primary-blue); margin: 20px 0; }
+
+        .cert-card {
+            background: #fef9e7;
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid var(--accent-gold);
+            margin: 25px 0;
+        }
+        .cert-price { font-size: 1.3rem; color: #7d6608; font-weight: bold; }
+
+        input { width: 100%; padding: 15px; border: 2px solid #d5dbdb; border-radius: 10px; margin-bottom: 20px; text-align: center; font-size: 1.1rem; box-sizing: border-box; }
+
+        .whatsapp-link { background: var(--wa-green); color: white; border: none; padding: 18px; border-radius: 12px; width: 100%; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: 0.3s; text-decoration: none; display: block; }
+        .whatsapp-link:hover { opacity: 0.9; transform: translateY(-2px); }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+<div id="main-container">
+    <div id="quiz-ui">
+        <h1>🐣 كورس أسرار الدواجن من الصفر</h1>
+        <div class="subtitle">منصة البرامج التخصصية - م. محمد طه</div>
+        
+        <div class="progress-bar-bg">
+            <div id="progress-fill"></div>
+        </div>
+
+        <div id="question-text" class="question-container">جاري التحميل...</div>
+        <div id="options-box" class="options-list"></div>
+        <div id="info-box"></div>
+    </div>
+
+    <div id="final-screen">
+        <div class="score-display" id="total-score">0</div>
+        <h2>أحسنتم يا متدربين!</h2>
+        <p>لقد اجتزتم اختبار المحطة الأولى بنجاح. أدخلوا الاسم الرباعي للاشتراك:</p>
+        
+        <input type="text" id="user-full-name" placeholder="الاسم الكامل لاعتماد الشهادة">
+        
+        <div class="cert-card">
+            <strong>🚀 طلب اشتراك رسمي في الكورس</strong>
+            <div class="cert-price">رسوم الاشتراك: 70,000 جنيه</div>
+            <p>سيتم إرسال طلبك للبشمهندس محمد طه مباشرة لتأكيد حجزك</p>
+        </div>
+
+        <button class="whatsapp-link" onclick="handleWhatsApp()">
+            أريد الاشتراك في الكورس واستلام رقم الحساب
+        </button>
+    </div>
+</div>
+
+<audio id="audio-correct" src="https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3"></audio>
+<audio id="audio-wrong" src="https://assets.mixkit.co/active_storage/sfx/2019/2019-preview.mp3"></audio>
+
+<script>
+    const questions = [
+        {
+            q: "يا متدربين، ما هي أول خطوة يجب القيام بها قبل وصول الكتاكيت للعنبر بـ 24 ساعة؟",
+            a: ["تجهيز العلف فقط", "تطهير العنبر وتشغيل الدفايات لضبط الحرارة", "إغلاق جميع النوافذ بإحكام"],
+            c: 1,
+            exp: "شرح: التدفئة المسبقة تضمن وصول الكتاكيت لبيئة دافئة وتمنع الصدمات الحرارية."
+        },
+        {
+            q: "ما هي درجة الحرارة المثالية لاستقبال الكتاكيت في الأسبوع الأول؟",
+            a: ["25-28 درجة مئوية", "33-35 درجة مئوية", "40 درجة مئوية فما فوق"],
+            c: 1,
+            exp: "شرح: درجة الحرارة بين 33 و35 هي البيئة المثالية لنمو الأنسجة ومنع النفوق."
+        },
+        {
+            q: "يا متدربين، لماذا نستخدم 'النشارة' أو الفرشة في أرضية العنبر؟",
+            a: ["للزينة فقط", "لعزل الكتاكيت عن برودة الأرض وامتصاص الرطوبة", "لتوفير مساحة للعب"],
+            c: 1,
+            exp: "شرح: الفرشة الجافة تمنع أمراض الجهاز التنفسي وتحمي أرجل الطيور."
+        },
+        {
+            q: "يا متدربين، ما هو الهدف من تقديم 'محلول السكر' فور وصول الكتاكيت؟",
+            a: ["لزيادة الوزن سريعاً", "لتعويض إجهاد النقل وتوفير طاقة سريعة", "لتغيير طعم الماء فقط"],
+            c: 1,
+            exp: "شرح: السكر يمنح الكتكوت الطاقة اللازمة ليبدأ بالحركة والبحث عن العلف."
+        },
+        {
+            q: "متى نعتبر أن توزيع الحرارة في العنبر 'خاطئ'؟",
+            a: ["عند انتشار الكتاكيت بانتظام", "عندما تتجمع الكتاكيت كلها في الأركان أو تحت الدفايات", "عندما تتحرك الكتاكيت بنشاط"],
+            c: 1,
+            exp: "شرح: التجمع مؤشر على البرد، والهروب للأطراف مؤشر على الحرارة الزائدة."
+        },
+        {
+            q: "يا متدربين، ما هي الوظيفة الأساسية للأمن الحيوي في المزرعة؟",
+            a: ["حراسة المزرعة من السرقة", "منع دخول مسببات الأمراض والعدوى للمزرعة", "توفير التكاليف الممالية"],
+            c: 1,
+            exp: "شرح: الأمن الحيوي هو خط الدفاع الأول لمنع دخول الأمراض الفيروسية والبكتيرية."
+        },
+        {
+            q: "لماذا يفضل تقديم الماء قبل العلف بساعتين عند الاستقبال؟",
+            a: ["لترطيب جسم الكتكوت وتنشيط أجهزته الحيوية", "لأنه أرخص من العلف", "لإجبار الكتكوت على النوم"],
+            c: 0,
+            exp: "شرح: شرب الماء أولاً يضمن جاهزية الجهاز الهضمي لاستقبال وهضم العلف بكفاءة."
+        },
+        {
+            q: "يا متدربين، ما هو خطر الرطوبة الزائدة في 'الفرشة'؟",
+            a: ["لا يوجد خطر", "تؤدي لانتشار الأمراض مثل الكوكسيديا", "تجعل الكتاكيت تنمو أسرع"],
+            c: 1,
+            exp: "شرح: الرطوبة بيئة خصبة لنمو الطفيليات والبكتيريا الضارة بالقطيع."
+        },
+        {
+            q: "ما هو الوقت المناسب لبدء برنامج التحصينات؟",
+            a: ["بعد بلوغ الدجاج عمر شهر", "في الأيام الأولى حسب جدول الطبيب البيطري", "عند ظهور علامات المرض فقط"],
+            c: 1,
+            exp: "شرح: التحصين هو وقاية استباقية يجب أن تتم قبل تعرض القطيع للأمراض."
+        },
+        {
+            q: "يا متدربين، لماذا نستخدم الإضاءة المستمرة (23 ساعة) في الأيام الثلاثة الأولى؟",
+            a: ["لإخافة الحشرات", "لمساعدة الكتاكيت على اكتشاف أماكن الماء والعلف بسرعة", "لأن الكتاكيت لا تنام في البداية"],
+            c: 1,
+            exp: "شرح: الإضاءة في البداية ضرورية جداً ليتعرف الكتكوت على بيئته ويبدأ في النمو فوراً."
+        }
+    ];
+
+    let currentIdx = 0;
+    let userScore = 0;
+
+    function displayQuestion() {
+        if (currentIdx >= questions.length) {
+            showFinalResults();
+            return;
+        }
+
+        const currentQ = questions[currentIdx];
+        document.getElementById("question-text").innerText = currentQ.q;
+        document.getElementById("info-box").style.display = "none";
+        document.getElementById("progress-fill").style.width = ((currentIdx + 1) / questions.length * 100) + "%";
+
+        const optionsBox = document.getElementById("options-box");
+        optionsBox.innerHTML = "";
+        
+        currentQ.a.forEach((option, i) => {
+            const btn = document.createElement("button");
+            btn.className = "option-btn";
+            btn.innerText = option;
+            btn.onclick = () => validateSelection(i, btn);
+            optionsBox.appendChild(btn);
+        });
+    }
+
+    function validateSelection(selectedIdx, btn) {
+        const correctIdx = questions[currentIdx].c;
+        const allBtns = document.querySelectorAll(".option-btn");
+        allBtns.forEach(b => b.disabled = true);
+
+        const info = document.getElementById("info-box");
+        info.innerText = questions[currentIdx].exp;
+        info.style.display = "block";
+
+        if (selectedIdx === correctIdx) {
+            btn.classList.add("is-correct");
+            document.getElementById("audio-correct").play();
+            userScore++;
+        } else {
+            btn.classList.add("is-wrong");
+            allBtns[correctIdx].classList.add("is-correct");
+            document.getElementById("audio-wrong").play();
+        }
+
+        setTimeout(() => {
+            currentIdx++;
+            displayQuestion();
+        }, 5000); 
+    }
+
+    function showFinalResults() {
+        document.getElementById("quiz-ui").style.display = "none";
+        document.getElementById("final-screen").style.display = "block";
+        document.getElementById("total-score").innerText = userScore + " / " + questions.length;
+    }
+
+    function handleWhatsApp() {
+        const name = document.getElementById("user-full-name").value;
+        if (!name) { alert("يا متدرب، فضلاً اكتب اسمك الرباعي."); return; }
+        
+        const message = encodeURIComponent(
+            `🚀 أريد الاشتراك في الكورس\n` +
+            `👤 المتدرب: ${name}\n` +
+            `📊 نتيجتي في المحطة الأولى: ${userScore} من 10\n` +
+            `💰 أنا موافق على دفع رسوم الاشتراك (70,000 ج).\n` +
+            `💳 أرجو تزويدي برقم الحساب البنكي لتأكيد حجز مقعدي.`
+        );
+        
+        window.open(`https://wa.me/249999240574?text=${message}`);
+    }
+
+    displayQuestion();
+</script>
+
+</body>
+</html>
