@@ -3,277 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اختبار المحاضرة الثالثة - فن التغذية</title>
+    <title>إختبار المحاضرة الرابعة - م. محمد طه</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        :root {
-            --primary-blue: #0c1a30;
-            --accent-gold: #b08d41;
-            --success-green: #1d8348;
-            --error-red: #943126;
-            --white: #ffffff;
-            --wa-green: #2ecc71;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(120deg, #0c1a30 0%, #060d1a 100%);
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            color: var(--primary-blue);
-            padding: 15px;
-        }
-
-        #main-container {
-            background: var(--white);
-            width: 100%;
-            max-width: 650px;
-            padding: 35px;
-            border-radius: 25px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            text-align: center;
-            border-top: 10px solid var(--accent-gold);
-        }
-
-        h1 { font-size: 1.7rem; margin-bottom: 5px; color: var(--primary-blue); }
-        .subtitle { color: var(--accent-gold); font-weight: bold; margin-bottom: 25px; font-size: 1rem; }
-
-        .progress-bar-bg { background: #e5e8e8; height: 12px; border-radius: 6px; margin-bottom: 30px; overflow: hidden; }
-        #progress-fill { background: var(--accent-gold); width: 0%; height: 100%; transition: width 0.4s ease; }
-
-        .question-container { font-size: 1.25rem; font-weight: 700; margin-bottom: 25px; line-height: 1.6; min-height: 70px; text-align: right; }
-
-        .options-list { display: grid; gap: 12px; }
-        .option-btn {
-            padding: 16px;
-            border: 2px solid #d5dbdb;
-            border-radius: 12px;
-            background: var(--white);
-            cursor: pointer;
-            font-size: 1.05rem;
-            font-weight: 600;
-            transition: 0.3s;
-            text-align: right;
-            color: var(--primary-blue);
-        }
-        .option-btn:hover:not(:disabled) { border-color: var(--primary-blue); background: #ebf5fb; }
-        
-        .is-correct { background: var(--success-green) !important; color: white !important; border-color: var(--success-green) !important; }
-        .is-wrong { background: var(--error-red) !important; color: white !important; border-color: var(--error-red) !important; }
-
-        #info-box {
-            display: none;
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 10px;
-            background: #fdfefe;
-            border: 1px solid #d5dbdb;
-            border-right: 5px solid var(--primary-blue);
-            text-align: right;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            animation: fadeIn 0.4s;
-        }
-
-        #final-screen { display: none; }
-        .score-display { font-size: 4rem; font-weight: 800; color: var(--primary-blue); margin: 20px 0; }
-
-        .cert-card {
-            background: #fef9e7;
-            padding: 20px;
-            border-radius: 15px;
-            border: 1px solid var(--accent-gold);
-            margin: 25px 0;
-        }
-        .cert-price { font-size: 1.3rem; color: #7d6608; font-weight: bold; }
-
-        input { width: 100%; padding: 15px; border: 2px solid #d5dbdb; border-radius: 10px; margin-bottom: 20px; text-align: center; font-size: 1.1rem; box-sizing: border-box; }
-
-        .whatsapp-link { background: var(--wa-green); color: white; border: none; padding: 18px; border-radius: 12px; width: 100%; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: 0.3s; text-decoration: none; display: block; }
-        .whatsapp-link:hover { opacity: 0.9; transform: translateY(-2px); }
-
+        :root { --navy: #0c1a30; --gold: #b08d41; --white: #ffffff; --success: #27ae60; --danger: #c0392b; --whatsapp: #25d366; }
+        body { font-family: 'Tajawal', sans-serif; background-color: #1a1a1a; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+        .quiz-container { background: var(--white); width: 100%; max-width: 750px; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border-top: 10px solid var(--gold); }
+        .quiz-header { background: var(--navy); color: white; padding: 30px; text-align: center; }
+        .quiz-header h1 { font-family: 'Cairo'; margin: 0; font-size: 24px; color: var(--gold); }
+        .progress-bar { height: 8px; background: #eee; width: 100%; }
+        #progress-fill { height: 100%; background: var(--gold); width: 0%; transition: 0.4s; }
+        .question-box { padding: 40px; }
+        .question-text { font-size: 22px; font-weight: bold; color: var(--navy); margin-bottom: 25px; line-height: 1.5; min-height: 60px; }
+        .options-grid { display: grid; gap: 12px; }
+        .option-btn { background: #f8fafc; border: 2px solid #e2e8f0; padding: 18px; border-radius: 12px; cursor: pointer; text-align: right; font-size: 18px; font-weight: bold; transition: 0.2s; color: var(--navy); }
+        .option-btn:hover:not(:disabled) { border-color: var(--gold); background: #fdfae7; }
+        .correct { background: var(--success) !important; color: white !important; border-color: var(--success) !important; }
+        .wrong { background: var(--danger) !important; color: white !important; border-color: var(--danger) !important; }
+        #feedback-box { margin-top: 20px; padding: 15px; border-radius: 10px; display: none; font-weight: bold; animation: fadeIn 0.4s; }
+        #result-screen { display: none; padding: 40px; text-align: center; }
+        .score-circle { width: 140px; height: 140px; border-radius: 50%; border: 8px solid var(--gold); display: flex; align-items: center; justify-content: center; font-size: 40px; font-weight: 900; margin: 0 auto 20px; color: var(--navy); }
+        .btn-action { background: var(--gold); color: white; border: none; padding: 12px 25px; border-radius: 50px; font-size: 16px; font-weight: bold; cursor: pointer; margin: 5px; font-family: 'Cairo'; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-whatsapp { background: var(--whatsapp); }
+        .fee-notice { background: #fff3cd; color: #856404; padding: 10px; border-radius: 8px; margin: 15px 0; font-weight: bold; font-size: 14px; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @media print { .btn-action, .option-btn, .quiz-header, .progress-bar, .fee-notice { display: none !important; } #result-screen { display: block !important; } }
     </style>
 </head>
 <body>
 
-<div id="main-container">
+<div class="quiz-container">
     <div id="quiz-ui">
-        <h1>🌾 كورس أسرار الدواجن: التغذية</h1>
-        <div class="subtitle">المحاضرة الثالثة - م. محمد طه</div>
-        
-        <div class="progress-bar-bg">
-            <div id="progress-fill"></div>
+        <div class="quiz-header">
+            <h1>إختبار المحاضرة الرابعة: الدرع الواقي</h1>
+            <p>يا متدربين، نرجو كتابة الاسم قبل البدء</p>
+            <input type="text" id="user-name" placeholder="أدخل اسمك الثلاثي هنا" style="width: 80%; padding: 10px; border-radius: 5px; border: none; margin-top: 10px; text-align: center; font-family: 'Tajawal';">
         </div>
-
-        <div id="question-text" class="question-container">جاري التحميل...</div>
-        <div id="options-box" class="options-list"></div>
-        <div id="info-box"></div>
+        <div class="progress-bar"><div id="progress-fill"></div></div>
+        <div class="question-box">
+            <div id="q-text" class="question-text">يرجى إدخال اسمك للبدء..</div>
+            <div id="options-box" class="options-grid"></div>
+            <div id="feedback-box"></div>
+            <div style="margin-top: 20px; text-align: left; font-weight: bold; color: var(--gold);" id="counter">1 / 10</div>
+            <button id="start-btn" class="btn-action" style="width: 100%; margin-top: 20px;" onclick="startQuiz()">ابدأ الاختبار الآن</button>
+        </div>
     </div>
 
-    <div id="final-screen">
-        <div class="score-display" id="total-score">0</div>
-        <h2>أحسنتم يا متدربين!</h2>
-        <p>لقد أثبتم كفاءتكم في إدارة التغذية. أدخلوا الاسم الرباعي للانتقال للمحطة الرابعة:</p>
+    <div id="result-screen">
+        <h2 id="congrats-msg">أحسنتم يا متدربين!</h2>
+        <div class="score-circle" id="final-score">0</div>
+        <p id="evaluation-text" style="font-weight: bold;"></p>
+        <div class="fee-notice">رسوم استخراج الشهادة المعتمدة: 7,000 جنيه فقط</div>
         
-        <input type="text" id="user-full-name" placeholder="الاسم الكامل لاعتماد الشهادة">
-        
-        <div class="cert-card">
-            <strong>💎 اعتماد خبير تغذية دواجن</strong>
-            <div class="cert-price">رسوم الكورس: 70,000 جنيه</div>
-            <p>سيتم إرسال نتيجتكم فوراً للمهندس محمد طه لتسجيل الانتقال للمستوى التالي</p>
-        </div>
-
-        <button class="whatsapp-link" onclick="handleWhatsApp()">
-            إرسال النتيجة عبر الواتساب وحجز المقعد
+        <button class="btn-action btn-whatsapp" onclick="sendWhatsApp()">
+            <i class="fab fa-whatsapp"></i> إرسال النتيجة وطلب شهادة
         </button>
+        <button class="btn-action" onclick="window.print()">
+            <i class="fas fa-print"></i> طباعة
+        </button>
+        <button class="btn-action" style="background: var(--navy);" onclick="location.reload()">إعادة</button>
     </div>
 </div>
 
-<audio id="audio-correct" src="https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3"></audio>
-<audio id="audio-wrong" src="https://assets.mixkit.co/active_storage/sfx/2019/2019-preview.mp3"></audio>
+<audio id="sound-correct" src="https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3"></audio>
+<audio id="sound-wrong" src="https://assets.mixkit.co/active_storage/sfx/2019/2019-preview.mp3"></audio>
 
 <script>
     const questions = [
-        {
-            q: "يا متدربين، كم تمثل تكلفة التغذية تقريباً من إجمالي تكاليف دورة التسمين؟",
-            a: ["30% فقط", "50% تقريباً", "70% فأكثر"],
-            c: 2,
-            exp: "شرح: التغذية هي الحصة الأكبر، لذا فإن توفير جرام واحد من الهدر يوفر مبالغ ضخمة على المدى الطويل."
-        },
-        {
-            q: "ما هو الهدف الأساسي من تقديم 'العلف البادئ' بنسبة بروتين 23% في الأسبوعين الأولين؟",
-            a: ["لزيادة الشحوم فقط", "لبناء الهيكل العظمي وتأسيس الأعضاء الداخلية", "لتحسين لون الريش"],
-            c: 1,
-            exp: "شرح: البروتين العالي في البداية ضروري لبناء الأساس القوي الذي سيحمل اللحم لاحقاً."
-        },
-        {
-            q: "يا متدربين، ماذا يعني وصول معامل التحويل الغذائي (FCR) إلى الرقم 1.5؟",
-            a: ["أن الطائر أكل 1.5 كيلو لحم", "أن كل 1.5 كيلو علف تم تحويلها إلى 1 كيلو لحم", "أن الدورة ستنتهي في 15 يوماً"],
-            c: 1,
-            exp: "شرح: الـ FCR هو مقياس الكفاءة؛ كلما قل الرقم، زادت أرباحكم لأنكم تنتجون لحماً بعلف أقل."
-        },
-        {
-            q: "لماذا يحذر المهندس محمد طه من 'التغيير المفاجئ' لنوع العلف (من بادئ لنامي)؟",
-            a: ["لأنه يسبب صدمة معوية وإسهالات للطيور", "لأن الكتاكيت ستتوقف عن الأكل نهائياً", "لأنه يزيد من سعر العلف"],
-            c: 0,
-            exp: "شرح: يجب خلط النوعين تدريجياً لمدة 3 أيام للسماح لبكتيريا الأمعاء بالتأقلم."
-        },
-        {
-            q: "يا متدربين، ما هي العلاقة الصحيحة بين استهلاك الماء والعلف؟",
-            a: ["يشرب الطائر نصف ما يأكله", "يشرب الطائر كمية مساوية للعلف تماماً", "يشرب الطائر ضعف (2:1) كمية العلف المستهلكة"],
-            c: 2,
-            exp: "شرح: الماء هو المحرك الأساسي للهضم، ونقص الماء يعني نقص استهلاك العلف فوراً."
-        },
-        {
-            q: "ما هو التأثير المباشر لارتفاع غاز الأمونيا في العنبر على التغذية؟",
-            a: ["يجعل العلف ألذ للطائر", "يقلل الشهية ويسبب التهابات تنفسية تعيق النمو", "يزيد من سرعة الهضم"],
-            c: 1,
-            exp: "شرح: البيئة السيئة تمنع الطائر من الاستفادة من العلف، مهما كانت جودته عالية."
-        },
-        {
-            q: "يا متدربين، كيف تكتشفون وجود 'سموم فطرية' في العلف من خلال مراقبة القطيع؟",
-            a: ["عند رؤية تفاوت في الأوزان وإسهالات وأحياناً نفوق مفاجئ", "عندما يغرد الكتكوت بصوت عالٍ", "عندما تزداد حركة الطيور"],
-            c: 0,
-            exp: "شرح: السموم الفطرية تدمر الكبد والجهاز المناعي وتظهر كحالات مرضية غير مفهومة."
-        },
-        {
-            q: "لماذا يفضل استخدام برامج 'الإظلام' (ساعتين مثلاً) خلال اليوم؟",
-            a: ["لتوفير تكلفة الكهرباء فقط", "لإعطاء فرصة للجهاز الهضمي لامتصاص العلف بكفاءة وراحة الطائر", "لإخفاء الطيور عن المفترسات"],
-            c: 1,
-            exp: "شرح: الإظلام المبرمج يحسن من كفاءة التمثيل الغذائي ويقلل من حالات الموت المفاجئ."
-        },
-        {
-            q: "يا متدربين، ما هي درجة الحرارة المثالية لمياه الشرب في الصيف؟",
-            a: ["40 درجة مئوية", "بين 20 إلى 25 درجة مئوية", "درجة الغليان"],
-            c: 1,
-            exp: "شرح: الماء الساخن ينفر الطيور من الشرب، مما يؤدي لانخفاض استهلاك العلف والجفاف."
-        },
-        {
-            q: "ما هي الطريقة الصحيحة لمنع هدر العلف في 'المعالف'؟",
-            a: ["ملء المعلفة للحافة دائماً", "ضبط مستوى المعلفة ليكون بمستوى ظهر الطائر وملؤها للثلث فقط", "وضع العلف على الأرض مباشرة"],
-            c: 1,
-            exp: "شرح: رفع المعلفة لمستوى ظهر الطائر يمنعه من نبش العلف وإهداره في الفرشة."
-        }
+        { q: "يا متدربين، ما هو الإجراء الأهم عند مدخل العنبر؟", a: ["غسل الحذاء بالماء", "استخدام حوض التطهير (اليود)", "المسح بقطعة قماش"], c: 1, exp: "حوض التطهير هو صمام الأمان الأول." },
+        { q: "لماذا نضيف 'اللبن البودرة' لمياه التحصين؟", a: ["لزيادة الوزن", "لحماية الفيروس من الكلور والشوائب", "لجعل الماء حلواً"], c: 1, exp: "اللبن يحمي الفيروس (اللقاح) ليصل نشطاً." },
+        { q: "كم جرعة اللبن البودرة لكل لتر ماء؟", a: ["10 جرام", "2 جرام", "5 جرام"], c: 1, exp: "2 جرام كافية تماماً." },
+        { q: "أفضل توقيت للتحصين في مياه الشرب؟", a: ["الظهيرة", "الصباح الباكر (وقت البراد)", "المساء المتأخر"], c: 1, exp: "الحرارة تقتل الفيروس، لذا الصباح هو الأفضل." },
+        { q: "فائدة التعطيش قبل التحصين يا متدربين؟", a: ["توفير الماء", "ضمان استهلاك اللقاح بسرعة", "تحسين الهضم"], c: 1, exp: "التعطيش يضمن شرب اللقاح في أقل من ساعتين." },
+        { q: "عمر تحصين الجمبورو المعتاد؟", a: ["عمر يوم", "عمر 14 يوماً", "عمر 25 يوماً"], c: 1, exp: "يوم 14 هو الموعد السيادي للجمبورو." },
+        { q: "ماذا نفعل بعد التحصين بيومين؟", a: ["إعطاء مضاد حيوي", "إعطاء رافع مناعة وفيتامينات", "منع العلف"], c: 1, exp: "رافع المناعة يساعد في الاستجابة للقاح." },
+        { q: "كيف نتخلص من الطيور النافقة؟", a: ["رميها بالخارج", "الحرق أو الدفن بعيداً", "تركها بالعنبر"], c: 1, exp: "النافق مصدر عدوى ويجب دفنه أو حرقه." },
+        { q: "وظيفة السلك الضيق على النوافذ؟", a: ["منع الهواء", "منع العصافير الناقلة للأمراض", "الديكور"], c: 1, exp: "الطيور البرية تنقل الأوبئة الفتاكة." },
+        { q: "أهم ركيزة في الأمن الحيوي؟", a: ["كثرة العمال", "منع الزيارات والأشخاص الغرباء", "تلوين الجدران"], c: 1, exp: "الزيارات هي المصدر الأول لدخول الفيروسات." }
     ];
 
-    let currentIdx = 0;
-    let userScore = 0;
+    let currentIdx = 0; let score = 0; let userName = "";
 
-    function displayQuestion() {
-        if (currentIdx >= questions.length) {
-            showFinalResults();
-            return;
-        }
+    function startQuiz() {
+        userName = document.getElementById('user-name').value;
+        if (!userName) { alert("لطفاً، أدخل اسمك للبدء"); return; }
+        document.getElementById('start-btn').style.display = 'none';
+        document.getElementById('user-name').disabled = true;
+        loadQuestion();
+    }
 
-        const currentQ = questions[currentIdx];
-        document.getElementById("question-text").innerText = currentQ.q;
-        document.getElementById("info-box").style.display = "none";
-        document.getElementById("progress-fill").style.width = ((currentIdx + 1) / questions.length * 100) + "%";
-
-        const optionsBox = document.getElementById("options-box");
-        optionsBox.innerHTML = "";
-        
-        currentQ.a.forEach((option, i) => {
-            const btn = document.createElement("button");
-            btn.className = "option-btn";
-            btn.innerText = option;
-            btn.onclick = () => validateSelection(i, btn);
-            optionsBox.appendChild(btn);
+    function loadQuestion() {
+        if (currentIdx >= questions.length) { showFinal(); return; }
+        const qData = questions[currentIdx];
+        document.getElementById('q-text').innerText = qData.q;
+        document.getElementById('counter').innerText = `${currentIdx + 1} / ${questions.length}`;
+        document.getElementById('progress-fill').style.width = ((currentIdx + 1) / questions.length * 100) + "%";
+        document.getElementById('feedback-box').style.display = 'none';
+        const box = document.getElementById('options-box');
+        box.innerHTML = '';
+        qData.a.forEach((opt, i) => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.innerText = opt;
+            btn.onclick = () => validate(i, btn);
+            box.appendChild(btn);
         });
     }
 
-    function validateSelection(selectedIdx, btn) {
-        const correctIdx = questions[currentIdx].c;
-        const allBtns = document.querySelectorAll(".option-btn");
+    function validate(idx, btn) {
+        const correct = questions[currentIdx].c;
+        const allBtns = document.querySelectorAll('.option-btn');
         allBtns.forEach(b => b.disabled = true);
-
-        const info = document.getElementById("info-box");
-        info.innerText = questions[currentIdx].exp;
-        info.style.display = "block";
-
-        if (selectedIdx === correctIdx) {
-            btn.classList.add("is-correct");
-            document.getElementById("audio-correct").play();
-            userScore++;
+        const fb = document.getElementById('feedback-box');
+        fb.innerText = questions[currentIdx].exp; fb.style.display = 'block';
+        if (idx === correct) {
+            btn.classList.add('correct'); document.getElementById('sound-correct').play();
+            score++; fb.style.color = 'green';
         } else {
-            btn.classList.add("is-wrong");
-            allBtns[correctIdx].classList.add("is-correct");
-            document.getElementById("audio-wrong").play();
+            btn.classList.add('wrong'); allBtns[correct].classList.add('correct');
+            document.getElementById('sound-wrong').play(); fb.style.color = 'red';
         }
-
-        setTimeout(() => {
-            currentIdx++;
-            displayQuestion();
-        }, 4500); 
+        setTimeout(() => { currentIdx++; loadQuestion(); }, 3000);
     }
 
-    function showFinalResults() {
-        document.getElementById("quiz-ui").style.display = "none";
-        document.getElementById("final-screen").style.display = "block";
-        document.getElementById("total-score").innerText = userScore + " / " + questions.length;
+    function showFinal() {
+        document.getElementById('quiz-ui').style.display = 'none';
+        document.getElementById('result-screen').style.display = 'block';
+        document.getElementById('final-score').innerText = `${score} / ${questions.length}`;
+        document.getElementById('congrats-msg').innerText = `أحسنت يا ${userName}!`;
+        let msg = score >= 7 ? "مستوى ممتاز، أنت جاهز لحماية مزرعتك." : "راجع المحاضرة لتقوية معلوماتك.";
+        document.getElementById('evaluation-text').innerText = msg;
     }
 
-    function handleWhatsApp() {
-        const name = document.getElementById("user-full-name").value;
-        if (!name) { alert("يا متدرب، فضلاً اكتب اسمك الرباعي."); return; }
-        
-        const message = encodeURIComponent(
-            `🌾 نتيجتي في اختبار التغذية والتحويل اللحمي (المحاضرة 3)\n` +
-            `👤 المتدرب: ${name}\n` +
-            `📊 النتيجة: ${userScore} من 10\n` +
-            `✅ تم إكمال المحطة الثالثة بنجاح.\n` +
-            `🚀 بانتظار المحاضرة الرابعة (التحصينات).\n` +
-            `💰 ملتزم بدفع الرسوم المتبقية (70,000 ج).`
-        );
-        
-        window.open(`https://wa.me/249999240574?text=${message}`);
+    function sendWhatsApp() {
+        const phone = "249999240574";
+        const message = `السلام عليكم م. محمد طه،\nأنا المتدرب: ${userName}\nلقد أكملت إختبار المحاضرة الرابعة بنجاح.\nالنتيجة: ${score} من 10\nأرغب في استخراج الشهادة المعتمدة (رسوم: 7000 جنيه).`;
+        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
     }
-
-    displayQuestion();
 </script>
-
 </body>
 </html>
